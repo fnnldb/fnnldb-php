@@ -26,7 +26,7 @@ Simple usage looks like:
 
 ```php
 $fnnldb = new FnnlDb('YOUR_API_KEY');
-$order = $fnnldb->createOrder($data);
+$order = $fnnldb->create('order', $data);
 echo $order->id;
 ```
 
