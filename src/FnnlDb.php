@@ -60,35 +60,46 @@ class FnnlDb
 	}
 
 	/**
-     * Create Lead
+     * Create Item
      *
      * @return object
      */
-	public function createLead(Array $data)
+	public function create($type, Array $data)
 	{
 		$data['key'] = $this->key;
-		return $this->request('leads/create', $data, 'POST');
+		return $this->request($type.'s/create', $data, 'POST');
 	}
 
 	/**
-     * Create Order
+     * Send Confirmation
      *
      * @return object
      */
-	public function createOrder(Array $data)
+	public function confirm($type, Array $data)
 	{
 		$data['key'] = $this->key;
-		return $this->request('orders/create', $data, 'POST');
+		return $this->request($type.'s/confirm', $data, 'POST');
 	}
 
 	/**
-     * Send Order Confirmation
+     * Get Item
      *
      * @return object
      */
-	public function confirmOrder(Array $data)
+	public function get($type, $id)
 	{
 		$data['key'] = $this->key;
-		return $this->request('orders/confirm', $data, 'POST');
+		return $this->request($type.'s/'.$id, $data, 'GET');
+	}
+
+	/**
+     * List Items
+     *
+     * @return object
+     */
+	public function list($type, Array $data)
+	{
+		$data['key'] = $this->key;
+		return $this->request($type.'s', $data, 'GET');
 	}
 }
